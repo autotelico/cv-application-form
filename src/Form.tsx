@@ -1,28 +1,32 @@
-import { useState, Fragment } from 'react';
+import React, { useState, Fragment } from "react";
 
 interface School {
-  name: string,
-  titleOfStudy: string,
-  dateOfStudy: string,
+  name: string;
+  titleOfStudy: string;
+  dateOfStudy: string;
 }
 
 const initialSchool: School = {
-  name: '',
-  titleOfStudy: '',
-  dateOfStudy: '',
-}
+  name: "",
+  titleOfStudy: "",
+  dateOfStudy: "",
+};
 
 export function Form() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [school, setSchool] = useState(initialSchool)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [school, setSchool] = useState(initialSchool);
 
   function handleClick(e: MouseEvent): void {
-    setName(document.querySelector('#name')!.value)
-    setEmail(document.querySelector('#email')!.value)
-    setPhone(document.querySelector('#phone')!.value)
-    setSchool(document.querySelector('#school-name')!.value)
+    setName(document.querySelector<HTMLInputElement>("#name")!.value);
+    setEmail(document.querySelector<HTMLInputElement>("#email")!.value);
+    setPhone(document.querySelector<HTMLInputElement>("#phone")!.value);
+    setSchool({
+      name: document.querySelector<HTMLInputElement>("#school-name")!.value,
+      titleOfStudy: document.querySelector<HTMLInputElement>("#title-of-study")!.value,
+      dateOfStudy: document.querySelector<HTMLInputElement>("#date-of-study")!.value,
+    });
   }
 
   return (
@@ -32,9 +36,9 @@ export function Form() {
         <GeneralInfo />
         <Education />
         <PracticalExp />
-        <SubmitButton onClick={handleClick}/>
+        <SubmitButton onClick={handleClick} />
       </form>
-        <Results name={name} email={email} phone={phone} school={school}/>
+      <Results name={name} email={email} phone={phone} school={school} />
     </>
   );
 }
@@ -52,13 +56,13 @@ function GeneralInfo() {
   return (
     <>
       <label htmlFor="name">Name: </label>
-      <input type="text" id="name" className='input-data'/>
+      <input type="text" id="name" className="input-data" />
       <br />
       <label htmlFor="email">Email: </label>
-      <input type="email" id="email"/>
+      <input type="email" id="email" />
       <br />
       <label htmlFor="phone">Phone number: </label>
-      <input type="phone" id="phone"/>
+      <input type="phone" id="phone" />
       <br />
       <br />
     </>
@@ -91,27 +95,24 @@ function PracticalExp() {
   );
 }
 
-function SubmitButton({onClick}) {
+function SubmitButton({ onClick }) {
   return (
-    <button type="button" onClick={onClick}>Submit Form</button>
-  )
+    <button type="button" onClick={onClick}>
+      Submit Form
+    </button>
+  );
 }
 
-function Results({
-  name,
-  email,
-  phone,
-
-}) {
+function Results({ name, email, phone, school }) {
   return (
     <>
       <p>Name: {name}</p>
       <p>Email: {email}</p>
       <p>Phone: {phone}</p>
       <br />
-      <p>School: </p>
-      <p>Title of study: </p>
-      <p>Date of study: </p>
+      <p>School: {school.name}</p>
+      <p>Title of study: {school.titleOfStudy}</p>
+      <p>Date of study: {school.dateOfStudy}</p>
     </>
-  )
+  );
 }
