@@ -54,6 +54,34 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+input, textarea {
+  max-width: 300px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.results {
+  background-color: #424242;
+  border-radius: 15px;
+  padding: 5px 15px;
+}
+
+/* section:not(:first-child, :last-child) {
+  display: grid;
+  grid-template: repeat(3, 1fr) / 1fr 1fr;
+  background-color: red;
+  gap: 10px;
+} */
+
+/* #form * {
+  text-align: right;
+} */
+
+#main-responsibilities {
+  resize: none;
+  max-width: 200px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
