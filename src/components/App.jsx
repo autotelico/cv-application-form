@@ -10,7 +10,7 @@ function App() {
     setMessage('Sending. Wait 5 seconds...')
     sendStatus === 'not sent' && setTimeout(() => {
       setSendStatus('sent')
-      setMessage('Application sent! Thank you ✨')
+      setMessage('Application sent! Thank you.')
     }, 5000);
     
   }
